@@ -29,7 +29,7 @@ SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta 
 
 ## Software
 
-- Procesare imagine: Python + OpenCV
+- Procesare imagine: Python + OpenCV(se pot folosi și modelele pytorch fine-tunate -> ViT, ResNet-18, însă necesită GPU deoarece procesarea este relativ lentă =~ 4sec/imagine)
 - Comunicare: WebSocket între ESP32-CAM și server Node.js
 - Comenzi sortare/LED: HTTP către ESP32-WROOM
 - Algoritm rutare: Dijkstra (simulat în interfață HTML+JS)
