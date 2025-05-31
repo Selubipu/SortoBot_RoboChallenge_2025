@@ -35,6 +35,10 @@ SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta 
 - Algoritm rutare: Dijkstra (simulat în interfață HTML+JS)
 
 
+##Portofoliu
+
+SortoBot_Porotofoliu.pdf](https://github.com/user-attachments/files/20531227/SortoBot_Porotofoliu.pdf)
+
 
 ##Schema logica:
 ![Image](https://github.com/user-attachments/assets/4635153e-174f-4f07-bb7c-84c2de5af619)
