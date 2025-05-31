@@ -36,5 +36,12 @@ SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta 
 
 
 
-Schema logica:
+##Schema logica:
 ![Image](https://github.com/user-attachments/assets/4635153e-174f-4f07-bb7c-84c2de5af619)
+
+##Poze si filmari:
+
+https://github.com/user-attachments/assets/b2ccb9a9-f443-49c3-909a-d3e5d988ea58
+https://github.com/user-attachments/assets/23e91e9d-a596-46d2-8fa3-5b06764e7cb6
+https://github.com/user-attachments/assets/e5d52afc-24f5-448b-b534-50202f314977
+
