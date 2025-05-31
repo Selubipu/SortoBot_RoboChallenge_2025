@@ -46,7 +46,7 @@ def send_start_command(go: int):
         requests.get(f"{url_start()}?go={go}", timeout=2)
         print(f"⚙️  START {go}")
     except Exception as e:
-        print("❌ START error:", e)
+        print("START error:", e)
 
 # ═════════ PRELUCRĂRI IMAGINI ═════════
 def process_all_images():
@@ -59,7 +59,7 @@ def process_all_images():
         new_name = f"esp32_{color.lower()}_{ts}.jpg"
         cv2.imwrite(os.path.join(PROCESSED_FOLDER, new_name), img)
         os.remove(path)
-        print(f"🎯 {fname} -> {color}")
+        print(f"{fname} -> {color}")
         if color in ["Red", "Green", "Blue", "Yellow"]:
             send_led_command(color)
 
@@ -126,7 +126,7 @@ def build_gui():
 
 # ═════════ MAIN ═════════
 if __name__ == "__main__":
-    print("🧠 Procesator + GUI activ…")
+    print("Procesator + GUI activ…")
     # pornesc thread-ul de procesare imagini
     threading.Thread(target=processing_loop, daemon=True).start()
     # rulez GUI în thread-ul principal
