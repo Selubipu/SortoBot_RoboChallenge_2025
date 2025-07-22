@@ -10,9 +10,9 @@ SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta 
 - Trimite imaginile către un laptop prin WebSocket
 - Procesează culoarea dominantă în imagine și sortează gunoiul în compartimentul potrivit
 - Urmărește linia de pe jos cu senzori IR pentru a simula traseul pe o stradă
-- Opțional: Oprește în fața unui coș de gunoi detectat (cu senzor ultrasonic)
+- Oprește în fața unui coș de gunoi detectat (cu senzor ultrasonic)
 - Feedback vizual prin LED-uri colorate (roșu, verde, galben, albastru)
-- Descărcare automată în tomberoane printr-o platformă înclinabilă
+- Descărcare automată într-un loc printr-o platformă înclinabilă
 
 ---
 
