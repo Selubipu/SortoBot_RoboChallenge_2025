@@ -46,7 +46,7 @@ https://github.com/user-attachments/assets/1126a804-20d5-4390-b573-944901a968cf
 
 ## Software
 
-- Procesare imagine: YOLOv5 + OpenCV (500 ms / imagine)
+- Procesare imagine: YOLOv8 + OpenCV (500 ms / imagine)
 - Comunicare: WebSocket între ESP32-CAM și server Node.js
 - Comenzi sortare/LED: HTTP către ESP32-WROOM
 - Algoritm rutare: Dijkstra (simulat în interfață HTML+JS)
