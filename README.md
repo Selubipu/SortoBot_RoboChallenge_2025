@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/1126a804-20d5-4390-b573-944901a968cf
 
 ## Portofoliu
 
-SortoBot_Porotofoliu.pdf(https://github.com/user-attachments/files/20531227/SortoBot_Porotofoliu.pdf)
+[SortoBot_Porotofoliu.pdf](https://github.com/user-attachments/files/20531227/SortoBot_Porotofoliu.pdf)
 
 
 ## Schema logica:
