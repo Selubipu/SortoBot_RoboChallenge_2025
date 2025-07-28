@@ -50,27 +50,27 @@ void initCameraConfig() {
 void connectToWiFi() {
   WiFi.setHostname("SortoBot-CAM");
   WiFi.begin(ssid, password);
-  Serial.println("\n✅ Conectat la WiFi!");
-  Serial.print("🔄 Conectare WiFi");
+  Serial.println("\nConectat la WiFi!");
+  Serial.print("Conectare WiFi");
   while (WiFi.status() != WL_CONNECTED) {
     delay(300);
     Serial.print(".");
   }
-  Serial.println("\n✅ Conectat la WiFi!");
-  Serial.print("📶 IP: ");
+  Serial.println("\nConectat la WiFi!");
+  Serial.print("IP: ");
   Serial.println(WiFi.localIP());
 }
 
 void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
   switch(type) {
     case WStype_DISCONNECTED:
-      Serial.println("🔌 WebSocket deconectat");
+      Serial.println("WebSocket deconectat");
       break;
     case WStype_CONNECTED:
-      Serial.println("🔗 WebSocket conectat la server");
+      Serial.println("WebSocket conectat la server");
       break;
     case WStype_ERROR:
-      Serial.println("❌ Eroare WebSocket");
+      Serial.println("Eroare WebSocket");
       break;
     default:
       break;
@@ -99,7 +99,7 @@ void loop() {
   if (millis() - lastHeartbeatTime > HEARTBEAT_INTERVAL) {
     webSocket.sendTXT("heartbeat");
     lastHeartbeatTime = millis();
-    Serial.println("💓 Trimis heartbeat către server");
+    Serial.println("Trimis heartbeat către server");
   }
 
   int triggerState = digitalRead(TRIGGER_PIN);
@@ -118,11 +118,11 @@ void loop() {
     digitalWrite(LED_PIN, LOW);
 
     if (fb2) {
-      Serial.printf("📤 Trimit imagine (%d bytes)...\n", fb2->len);
+      Serial.printf("Trimit imagine (%d bytes)...\n", fb2->len);
       webSocket.sendBIN(fb2->buf, fb2->len);
       esp_camera_fb_return(fb2);
     } else {
-      Serial.println("❌ Captură eșuată");
+      Serial.println("Captură eșuată");
     }
 
     fotoTrimisa = true;
