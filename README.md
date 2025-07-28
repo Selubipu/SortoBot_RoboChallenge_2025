@@ -39,13 +39,14 @@ https://github.com/user-attachments/assets/1126a804-20d5-4390-b573-944901a968cf
 - **PCA9685** – control 6× servomotoare (braț robotic, mecanisme)
 - **L298N** – driver motor pentru deplasare
 - **Senzori IR + ultrasonic** – urmărire linie & oprire la coș
+- **Senzor electromagnetic** - Senzor Hall Analog, magnetic, KY-035 pentru variațiile de tensiune 
 - **3× baterii RCR123A + 2× convertoare buck** – alimentare stabilă
 
 ---
 
 ## Software
 
-- Procesare imagine: Python + OpenCV(se pot folosi și modelele pytorch fine-tunate -> ViT, ResNet-18, însă necesită GPU deoarece procesarea este relativ lentă =~ 4sec/imagine)
+- Procesare imagine: YOLOv5 + OpenCV (500 ms / imagine)
 - Comunicare: WebSocket între ESP32-CAM și server Node.js
 - Comenzi sortare/LED: HTTP către ESP32-WROOM
 - Algoritm rutare: Dijkstra (simulat în interfață HTML+JS)
