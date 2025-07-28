@@ -46,10 +46,10 @@ https://github.com/user-attachments/assets/1126a804-20d5-4390-b573-944901a968cf
 
 ## Software
 
-- Procesare imagine: YOLOv8 + OpenCV (500 ms / imagine)
-- Comunicare: WebSocket între ESP32-CAM și server Node.js
+- Procesare imagine: [YOLOv8 + OpenCV](https://github.com/Selubipu/InfoEducatie2025_SortoBot/blob/main/computer%20vision/bin_detect.py) (500 ms / imagine)
+- Comunicare: WebSocket între ESP32-CAM și [server Node.js](https://github.com/Selubipu/InfoEducatie2025_SortoBot/blob/main/server/server.js)
 - Comenzi sortare/LED: HTTP către ESP32-WROOM
-- Algoritm rutare: Dijkstra (simulat în interfață HTML+JS)
+- Algoritm [harta](https://github.com/Selubipu/InfoEducatie2025_SortoBot/blob/main/relevant%20files/harta_oras.html): Dijkstra (simulat în interfață HTML+JS)
 
 
 ## Portofoliu
