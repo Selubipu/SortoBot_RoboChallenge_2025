@@ -2,7 +2,11 @@
 
 SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta deșeurile menajere (plastic, sticlă, carton) în mod automat, pe baza culorii coșurilor de gunoi.
 
-![Robot_with_arm_2](https://github.com/user-attachments/assets/21a5990d-2300-4c44-859a-12b9376b3531)
+
+![sortobot-fata](https://github.com/user-attachments/assets/0be4961a-94c6-4fc7-93eb-86d985d4c41f)
+
+![sortobot-spate](https://github.com/user-attachments/assets/2305cf88-7383-4299-aec0-4dba8b875e03)
+
 
 ---
 
