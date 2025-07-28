@@ -13,6 +13,7 @@ void setServoAngle(uint8_t servo, int angle) {
 }
 
 // LED-uri pentru feedback culoare
+
 #define BLUE_LED    2
 #define YELLOW_LED  4
 #define GREEN_LED   16
@@ -30,6 +31,7 @@ const int IN3 = 25;
 const int IN4 = 26;
 const int range = 15;
 const int idle = 80;
+const int ENCODER_PIN = 34;
 
 int diffyL = 6, diffyR = 10, wrist = 7, claw = 8, depo = 9, steering = 15;
 int nd = 48;
@@ -55,7 +57,27 @@ void lightColorLED(String color) {
   else if (color == "yellow") digitalWrite(YELLOW_LED, HIGH);
 }
 
-void driveForward() { digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW); analogWrite(ENB, 170); }
+
+//Encoder
+volatile unsigned long lastPulseTime = 0;
+volatile unsigned long pulseInterval = 0;
+
+float rpm = 0;
+int finalPWM = 0;               // PWM stabil care va duce motorul la 1200 RPM
+const int targetRPM = 1000;     // RPM dorit
+const int pulsesPerRevolution = 1;  // depinde de encoderul tău
+
+void IRAM_ATTR countPulse() {
+  unsigned long currentTime = micros();
+  if (currentTime - lastPulseTime > 1000) { // debounce 1 ms
+    pulseInterval = currentTime - lastPulseTime;
+    lastPulseTime = currentTime;
+  }
+}
+
+//Motor Functions
+
+void driveForward(int aaa) { digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW); analogWrite(ENB, aaa); }
 void stopMotor() { digitalWrite(IN3, LOW); digitalWrite(IN4, LOW); analogWrite(ENB, 0); }
 void driveBackwards() { digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH); analogWrite(ENB, 90); }
 
@@ -128,7 +150,7 @@ void sort(int n) {
 void score(int n) {
   setServoAngle(wrist, 90);
   sort(n);
-  delay(500);
+  delay(1000);
   for(int i=90; i>=scoring; i--){
   setServoAngle(wrist, i);
   delay(10);}
@@ -170,7 +192,7 @@ void handleLED() {
     chillguy();
     gotbin=true;
   }
-    driveForward();
+    driveForward(finalPWM);
     delay(500);
     stopMotor();
 
@@ -189,6 +211,54 @@ void setup() {
   Wire.begin(23, 22);
   pwm.begin(); pwm.setPWMFreq(50);
 
+  //pwm finder
+  attachInterrupt(digitalPinToInterrupt(ENCODER_PIN), countPulse, FALLING);
+
+  digitalWrite(IN3, HIGH);  // direcția înainte
+  digitalWrite(IN4, LOW);
+
+  int pwm = 90;  // pornim de la 90 ca valoare minimă
+  analogWrite(ENB, pwm);
+
+  Serial.println("Calibrare pentru 1200 RPM...");
+
+  while (true) {
+    delay(300);  // un delay mai lung ca să se stabilizeze turația
+
+    if (pulseInterval > 1000) {
+      rpm = (60.0 * 1000000.0) / (pulseInterval * pulsesPerRevolution);
+    } else {
+      rpm = 0;
+    }
+
+    Serial.print("PWM: ");
+    Serial.print(pwm);
+    Serial.print(" -> RPM: ");
+    Serial.println(rpm);
+
+    if (rpm < targetRPM - 20) {
+      pwm++;
+      if (pwm > 255) break;
+      analogWrite(ENB, pwm);
+    } else if (rpm > targetRPM + 20) {
+      pwm--;
+      if (pwm < 90) pwm = 90;
+      analogWrite(ENB, pwm);
+    } else {
+      finalPWM = pwm;
+      Serial.print("Final PWM pentru ");
+      Serial.print(targetRPM);
+      Serial.print(" RPM: ");
+      Serial.println(finalPWM);
+      break;
+    }
+  }
+  stopMotor();
+
+  for (int pin : {RED_LED, GREEN_LED, BLUE_LED, YELLOW_LED}) digitalWrite(pin, HIGH);
+  delay(1000);
+  for (int pin : {RED_LED, GREEN_LED, BLUE_LED, YELLOW_LED}) digitalWrite(pin, LOW);
+
   WiFi.setHostname("SBot-CENTRAL");
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
@@ -199,6 +269,9 @@ void setup() {
   Serial.println("Server Web activ!");
   chillguy();
 }
+
+
+int a=false;
 
 void loop() {
   server.handleClient();
@@ -212,18 +285,19 @@ void loop() {
   long duration = pulseIn(ECHO_PIN, HIGH);
   float distance_cm = duration * 0.034 / 2;
 
-  if (distance_cm <= 10.0) {
+  if (distance_cm <= 15.0) {
     stopMotor();//driveBackwards(); delay(200); stopMotor();
     photo(); // după care Python trimite /led?color=...
     return;
+    delay(1000);
   }
 
   if (left == LOW && right == LOW) {
-    driveForward(); setServoAngle(steering, idle);
+    driveForward(finalPWM); setServoAngle(steering, idle);
   } else if (left == LOW && right == HIGH) {
-    driveForward(); setServoAngle(steering, idle - range);
+    driveForward(finalPWM); setServoAngle(steering, idle - range);
   } else if (left == HIGH && right == LOW) {
-    driveForward(); setServoAngle(steering, idle + range);
+    driveForward(finalPWM); setServoAngle(steering, idle + range);
   } else {
     stopMotor();
     if (!done  && gotbin==true) { outtake(); done = true; }
