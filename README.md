@@ -2,6 +2,22 @@
 
 SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta deșeurile menajere (plastic, sticlă, carton) în mod automat, pe baza culorii coșurilor de gunoi.
 
+## Poze si filmari:
+
+https://github.com/user-attachments/assets/b2ccb9a9-f443-49c3-909a-d3e5d988ea58
+
+https://github.com/user-attachments/assets/23e91e9d-a596-46d2-8fa3-5b06764e7cb6
+
+https://github.com/user-attachments/assets/e5d52afc-24f5-448b-b534-50202f314977
+
+![Image](https://github.com/user-attachments/assets/25b689ca-6fb0-4974-b696-684fc74e2748)
+
+https://github.com/user-attachments/assets/464c78f9-554b-40b7-92ba-7ac12fb501f8
+
+https://github.com/user-attachments/assets/1126a804-20d5-4390-b573-944901a968cf
+
+![Image](https://github.com/user-attachments/assets/8d889ea7-a891-4fbb-bb07-fadc6c8f0e00)
+
 ---
 
 ## Funcționalități
@@ -35,26 +51,11 @@ SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta 
 - Algoritm rutare: Dijkstra (simulat în interfață HTML+JS)
 
 
-##Portofoliu
+## Portofoliu
 
-SortoBot_Porotofoliu.pdf](https://github.com/user-attachments/files/20531227/SortoBot_Porotofoliu.pdf)
+SortoBot_Porotofoliu.pdf(https://github.com/user-attachments/files/20531227/SortoBot_Porotofoliu.pdf)
 
 
-##Schema logica:
+## Schema logica:
 ![Image](https://github.com/user-attachments/assets/4635153e-174f-4f07-bb7c-84c2de5af619)
 
-##Poze si filmari:
-
-https://github.com/user-attachments/assets/b2ccb9a9-f443-49c3-909a-d3e5d988ea58
-
-https://github.com/user-attachments/assets/23e91e9d-a596-46d2-8fa3-5b06764e7cb6
-
-https://github.com/user-attachments/assets/e5d52afc-24f5-448b-b534-50202f314977
-
-![Image](https://github.com/user-attachments/assets/25b689ca-6fb0-4974-b696-684fc74e2748)
-
-https://github.com/user-attachments/assets/464c78f9-554b-40b7-92ba-7ac12fb501f8
-
-https://github.com/user-attachments/assets/1126a804-20d5-4390-b573-944901a968cf
-
-![Image](https://github.com/user-attachments/assets/8d889ea7-a891-4fbb-bb07-fadc6c8f0e00)
