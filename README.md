@@ -10,6 +10,10 @@ SortoBot este un prototip de robot autonom proiectat pentru a detecta și sorta 
 
 ---
 
+## Onshape model 3D
+
+https://cad.onshape.com/documents/6dcd17111db380910306cb9f/w/09c7ec735f4629dd65699941/e/5b817ed5bd58267ef9394a37?renderMode=0&uiState=68889b5304ee9a1da0ab395c
+
 ## Funcționalități
 
 - Detectează automat coșurile de gunoi folosind ESP32-CAM și OpenCV
