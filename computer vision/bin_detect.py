@@ -51,9 +51,9 @@ def detect_dominant_color(img):
 def send_led_command(color):
     try:
         requests.get(f"{get_esp32_url()}?color={color.lower()}", timeout=2)
-        print(f"📡 LED trimis: {color}")
+        print(f"LED sent: {color}")
     except Exception as e:
-        print(f"❌ Eroare LED: {e}")
+        print(f"LED error: {e}")
 
 def process_all_images():
     files = sorted(os.listdir(RECEIVED_FOLDER))
@@ -61,7 +61,7 @@ def process_all_images():
         path = os.path.join(RECEIVED_FOLDER, fname)
         img = cv2.imread(path)
         if img is None:
-            print(f"⚠️ Fișier corupt sau invalid: {fname}")
+            print(f"Corrupted or invalid file: {fname}")
             os.remove(path)
             continue
         img_gray = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
@@ -82,7 +82,7 @@ def process_all_images():
             new_path = os.path.join(PROCESSED_FOLDER, new_filename)
             cv2.imwrite(new_path, img)
             os.remove(path)
-            print(f"Culoare detectată: {color} → fișier salvat: {new_filename}")
+            print(f"Detected color: {color} → saved file: {new_filename}")
             if color in ["Green", "Blue", "Yellow"]:
                 send_led_command(color)
             else:
@@ -93,13 +93,13 @@ def process_all_images():
             new_path = os.path.join(PROCESSED_FOLDER, new_filename)
             cv2.imwrite(new_path, img)
             os.remove(path)
-            print(f"Nu a fost detectat niciun cos → fișier salvat: {new_filename}")
+            print(f"No bin detected → saved file: {new_filename}")
             send_led_command("Red")
 
 def gui_loop():
     def on_button_click(color):
         send_led_command(color)
-        status_label.config(text=f"LED {color} aprins", fg="green")
+        status_label.config(text=f"LED {color} on", fg="green")
 
     root = tk.Tk()
     root.title("LED Manual Control - ESP32")
@@ -107,7 +107,7 @@ def gui_loop():
     frame = tk.Frame(root)
     frame.pack(padx=20, pady=20)
 
-    tk.Label(frame, text="Comandă manuală LED:", font=("Arial", 14)).pack(pady=10)
+    tk.Label(frame, text="Manual LED Control:", font=("Arial", 14)).pack(pady=10)
 
     colors = [("Red", "#ff4d4d"), ("Green", "#4CAF50"),
               ("Blue", "#2196F3"), ("Yellow", "#FFD700")]
@@ -121,7 +121,7 @@ def gui_loop():
     status_label = tk.Label(frame, text="", font=("Arial", 12))
     status_label.pack(pady=10)
 
-    # IP și buton Schimbă
+    # IP and change button
     ip_frame = tk.Frame(root)
     ip_frame.pack(pady=10)
 
@@ -131,9 +131,9 @@ def gui_loop():
 
     def change_ip_popup():
         popup = tk.Toplevel()
-        popup.title("Setează IP ESP32")
+        popup.title("Set ESP32 IP")
         popup.geometry("300x120")
-        tk.Label(popup, text="Introduceți IP nou:", font=("Arial", 12)).pack(pady=5)
+        tk.Label(popup, text="Enter new IP:", font=("Arial", 12)).pack(pady=5)
 
         ip_entry = tk.Entry(popup, font=("Arial", 12))
         ip_entry.insert(0, esp32_ip)
@@ -147,12 +147,12 @@ def gui_loop():
 
         tk.Button(popup, text="CONFIRM", command=confirm_ip, font=("Arial", 11)).pack(pady=5)
 
-    tk.Button(ip_frame, text="SCHIMBĂ", command=change_ip_popup, font=("Arial", 10)).pack(side=tk.LEFT)
+    tk.Button(ip_frame, text="CHANGE", command=change_ip_popup, font=("Arial", 10)).pack(side=tk.LEFT)
 
     root.mainloop()
 
 if __name__ == "__main__":
-    print("🧠 Procesator + GUI activ...")
+    print("Processor + GUI active...")
     t = threading.Thread(target=gui_loop, daemon=True)
     t.start()
     model = YOLO('C:\\SortoBot\\yolov2.pt')
