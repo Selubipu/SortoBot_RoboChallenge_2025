@@ -49,7 +49,7 @@ SortoBot is an autonomous prototype robot designed to detect and sort already so
 
 ## Portfolio
 
-[SortoBot_Portfolio.pdf](https://github.com/user-attachments/files/20531227/SortoBot_Porotofoliu.pdf)
+[SortoBot_Documentation_Robochallenge2025.pdf](https://github.com/user-attachments/files/23219410/SortoBot_Documentation_Robochallenge2025.pdf)
 
 ---
 
