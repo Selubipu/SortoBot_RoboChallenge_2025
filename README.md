@@ -53,12 +53,6 @@ SortoBot is an autonomous prototype robot designed to detect and sort already so
 
 ---
 
-## Logical Diagram
-
-![Logical Diagram](https://github.com/user-attachments/assets/4635153e-174f-4f07-bb7c-84c2de5af619)
-
----
-
 ## Videos and Images
 
 - Video & image gallery:  
